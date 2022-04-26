@@ -6,10 +6,7 @@ package com.jad.chessknight;
 public abstract class Pawn {
     private int x;
     private int y;
-    /**
-     * The Board.
-     */
-    protected final Board board;
+    private final Board board;
     private int moves;
 
     /**
@@ -39,7 +36,7 @@ public abstract class Pawn {
      *
      * @param x the x
      */
-    public final void setX(final int x) {
+    private void setX(final int x) {
         this.x = (x < 0) ? 0 : (x >= this.board.getWidth()) ? (this.board.getWidth() - 1) : x;
     }
 
@@ -52,12 +49,8 @@ public abstract class Pawn {
         return y;
     }
 
-    /**
-     * Sets y.
-     *
-     * @param y the y
-     */
-    public final void setY(final int y) {
+
+    private void setY(final int y) {
         this.y = (y < 0) ? 0 : (y >= this.board.getHeight()) ? (this.board.getHeight() - 1) : y;
     }
 
@@ -79,7 +72,7 @@ public abstract class Pawn {
         return false;
     }
 
-    private final int doAMove() {
+    private int doAMove() {
         return ++this.moves;
     }
 }

@@ -6,7 +6,7 @@ package com.jad.chessknight;
  * @param <Data> the type parameter extends Square
  */
 public abstract class Board<Data extends Square> {
-    private final Data[][] square;
+    private final Data[][] squares;
     private final int height;
     private final int width;
 
@@ -19,7 +19,7 @@ public abstract class Board<Data extends Square> {
     protected Board(final int height, final int width) {
         this.height = (height <= 0) ? 1 : height;
         this.width = (width <= 0) ? 1 : width;
-        this.square = (Data[][]) new Square[this.height][this.width];
+        this.squares = (Data[][]) new Square[this.height][this.width];
     }
 
     /**
@@ -49,7 +49,7 @@ public abstract class Board<Data extends Square> {
      */
     public final Data getAt(int x, int y) {
         if ( (x >= 0) && (y >= 0) && (x < this.getWidth()) && (y < this.getHeight()) ) {
-            return this.square[y][x];
+            return this.squares[y][x];
         }
         return null;
     }
@@ -63,7 +63,7 @@ public abstract class Board<Data extends Square> {
      */
     public final void putAt(int x, int y, Data data) {
         if ( (x >= 0) && (y >= 0) && (x < this.getWidth()) && (y < this.getHeight()) ) {
-            this.square[y][x] = data;
+            this.squares[y][x] = data;
         }
     }
 
@@ -74,9 +74,9 @@ public abstract class Board<Data extends Square> {
      * @param y    the y
      * @param step the step
      */
-    public void saveStepAt(int x, int y, int step) {
+    public final void saveStepAt(int x, int y, int step) {
         if ( (x >= 0) && (y >= 0) && (x < this.getWidth()) && (y < this.getHeight()) ) {
-            this.square[y][x].setValue(step);
+            this.squares[y][x].setValue(step);
         }
     }
 
@@ -86,9 +86,9 @@ public abstract class Board<Data extends Square> {
      * @param x the x
      * @param y the y
      */
-    public void clearStepAt(int x, int y) {
+    public final void clearStepAt(int x, int y) {
         if ( (x >= 0) && (y >= 0) && (x < this.getWidth()) && (y < this.getHeight()) ) {
-            this.square[y][x].setValue(0);
+            this.squares[y][x].setValue(0);
         }
     }
 
