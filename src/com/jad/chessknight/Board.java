@@ -5,7 +5,7 @@ package com.jad.chessknight;
  *
  * @param <Data> the type parameter extends Square
  */
-public abstract class Board<Data extends Square> {
+public class Board<Data extends Square> {
     private final Data[][] squares;
     private final int height;
     private final int width;
@@ -16,7 +16,7 @@ public abstract class Board<Data extends Square> {
      * @param height the height of the board
      * @param width  the width of the board
      */
-    protected Board(final int height, final int width) {
+    public Board(final int height, final int width) {
         this.height = (height <= 0) ? 1 : height;
         this.width = (width <= 0) ? 1 : width;
         this.squares = (Data[][]) new Square[this.height][this.width];
